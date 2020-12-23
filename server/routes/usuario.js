@@ -42,7 +42,7 @@ app.get('/usuario', verificaToken, function (req, res) {
                 });
             })
 
-  });
+});
    
 
 app.post('/usuario', [verificaToken, vericaAdmin_Role], function (req, res) {
@@ -106,7 +106,7 @@ app.delete('/usuario/:id', [verificaToken, vericaAdmin_Role], function (req, res
     
     Usuario.findByIdAndUpdate(id, cambiaEstado, {new: true}, (err, usuarioBorrado) => {
         if(err) {
-            return res.status(400).json({
+            return res.status(500).json({
                 ok: false,
                 err
             });
