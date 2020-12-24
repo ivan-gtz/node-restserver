@@ -65,7 +65,7 @@ app.put('/upload/:tipo/:id', function(req, res) {
                 });
 
     //Aquí, imagen cargada
-    if(tipo === 'usuario') {
+    if(tipo == 'usuarios') {
         imagenUsuario(id, res, nombreArchivo);
     } else {
         imagenProducto(id, res, nombreArchivo);
@@ -74,8 +74,7 @@ app.put('/upload/:tipo/:id', function(req, res) {
 });
 
 function imagenUsuario( id, res, nombreArchivo ) {
-    Producto.findById(id, (err, usuarioDB) =>{
-
+    Usuario.findById(id, (err, usuarioDB) =>{
         if( err ) {
             borraArchivo(nombreArchivo, 'usuarios');
             return res.status(500).json({
